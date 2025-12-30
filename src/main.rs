@@ -1,4 +1,3 @@
-use std::ascii::AsciiExt;
 use std::collections::HashSet;
 use std::io::Error;
 use std::{env, fs};
@@ -63,7 +62,7 @@ impl LetterBoxed {
             panic!();
         }
 
-        let mut dict = dict.unwrap();
+        let dict = dict.unwrap();
         let mut possible_words = Vec::new();
         let chars = self.get_all_chars();
 
@@ -114,7 +113,7 @@ impl LetterBoxed {
             curr.push(word.clone());
             let missing = self.check_missing_chars(&curr);
 
-            if missing <= 0 {
+            if missing == 0 {
                 return curr;
             }
 
@@ -170,7 +169,7 @@ impl LetterBoxed {
             }
         }
 
-        return (chars.len() - used_chars.len()) as u32;
+        (chars.len() - used_chars.len()) as u32
     }
 }
 
