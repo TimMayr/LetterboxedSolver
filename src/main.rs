@@ -118,7 +118,7 @@ impl LetterBoxed {
     }
 
     pub fn solve(&self) -> Vec<String> {
-        let dict = read_file("./words.txt");
+        let dict = read_file("./words_big.txt");
 
         if dict.is_err() {
             println!("Dictionary wasn't found");
@@ -289,7 +289,9 @@ impl Crossplay {
 
             for (i, c) in self.pattern.iter().enumerate() {
                 if *c != '.' {
-                    is_possible = word.chars().nth(i).unwrap() == *c;
+                    if word.chars().nth(i).unwrap() != *c {
+                        is_possible = false;
+                    }
                 }
             }
 
